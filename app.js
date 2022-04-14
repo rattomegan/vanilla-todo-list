@@ -1,3 +1,11 @@
+const icons = {
+  // complete: '<i class="fa-regular fa-check"></i>',
+  complete: '<i class="fa-regular fa-square-check"></i>',
+  deleted: '<i class="fa-solid fa-xmark"></i>',
+  checkbox: '<i class="fa-regular fa-square"></i>'
+}
+
+
 // Selectors
 const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
@@ -28,6 +36,13 @@ function addTodo(evt) {
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
 
+    // completed button
+    const completedBtn = document.createElement('button');
+    completedBtn.innerHTML = icons['complete'];
+    completedBtn.classList.add('complete-btn');
+    todoDiv.appendChild(completedBtn);
+
+
     // create li for todo item
     const newTodo = document.createElement('li');
     newTodo.innerText = todoInput.value;
@@ -37,15 +52,9 @@ function addTodo(evt) {
     // add todo to local storage
     saveLocalTodos(todoInput.value);
 
-    // completed button
-    const completedBtn = document.createElement('button');
-    completedBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
-    completedBtn.classList.add('complete-btn');
-    todoDiv.appendChild(completedBtn);
-
     // delete button
     const deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    deleteBtn.innerHTML = icons['deleted'];
     deleteBtn.classList.add('delete-btn');
     todoDiv.appendChild(deleteBtn);
 
@@ -59,16 +68,13 @@ function addTodo(evt) {
 }
 
 function deleteOrCheck(evt) {
-  const item = evt.target;
+  const item = evt.target; // this returns the entire button
   // delete todo
   if(item.classList[0] === 'delete-btn') {
     const todo = item.parentElement;
     todo.classList.add('fall');
     removeLocalTodos(todo)
-    // setTimeout(() => {
-    //   todo.remove()
-    // }, 1000)
-    // remove todo after fall transition has completed
+    // remove todo once transition has finished
     todo.addEventListener('transitionend', evt => {
       todo.remove();
     })
@@ -78,6 +84,15 @@ function deleteOrCheck(evt) {
   if(item.classList[0] === 'complete-btn') {
     const todo = item.parentElement;
     todo.classList.toggle('completed');
+
+    // new code here
+    item.classList.toggle('complete');
+    if(item.classList[1] === 'complete') {
+      item.innerHTML = icons['complete']
+    } else {
+      item.innerHTML = icons['checkbox'];
+    }
+    console.log(item)
   }
 }
 
@@ -100,21 +115,21 @@ function getTodos() {
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
 
+    // completed button
+    const completedBtn = document.createElement('button');
+    completedBtn.innerHTML = icons['checkbox'];
+    completedBtn.classList.add('complete-btn');
+    todoDiv.appendChild(completedBtn);
+
     // create li for todo item
     const newTodo = document.createElement('li');
     newTodo.innerText = todo;
     newTodo.classList.add('todo-item');
     todoDiv.appendChild(newTodo);
 
-    // completed button
-    const completedBtn = document.createElement('button');
-    completedBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
-    completedBtn.classList.add('complete-btn');
-    todoDiv.appendChild(completedBtn);
-
     // delete button
     const deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    deleteBtn.innerHTML = icons['deleted'];
     deleteBtn.classList.add('delete-btn');
     todoDiv.appendChild(deleteBtn);
 

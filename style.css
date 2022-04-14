@@ -91,10 +91,13 @@ form button:hover {
 .todo-list {
   min-width: 40%;
   list-style: none; 
+  /* border outside of list */
+  /* border: 1px solid #00509d;
+  border-radius: 5px; */
 }
 
 .todo {
-  margin-bottom: 1rem;
+  padding: 0.8rem;
   /* color: #333; */
   font-size: 1.6rem;
   display: flex;
@@ -105,7 +108,6 @@ form button:hover {
   width: 100%;
   max-width: 500px;
   border-bottom: 1px solid #00509d;
-
 }
 
 .todo-item {
@@ -125,9 +127,10 @@ form button:hover {
 }
 
 /* disable clicking on icon so there are no pointer position issues when clicking on button */
-.fa-check,
-.fa-xmark {
-  font-size: 1.4rem;
+.fa-square,
+.fa-xmark,
+.fa-square-check {
+  font-size: 1.6rem;
   pointer-events: none;
 }
 

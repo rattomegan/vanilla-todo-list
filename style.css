@@ -70,7 +70,8 @@ form button:hover {
   padding: 0 0.5rem;
 }
 
-.delete-btn, .complete-btn {
+.delete-btn, 
+.complete-btn {
   background: #f77f5d;
   color: #fff;
   border: none;
@@ -83,7 +84,12 @@ form button:hover {
   background: rgb(140, 201, 43);
 }
 
-/* needs to target .completed li if I do not use button icons */
+/* disable clicking on icon so there are no pointer position issues when clicking on button */
+.fa-square-check,
+.fa-square-xmark {
+  pointer-events: none;
+}
+
 .completed {
   text-decoration: line-through;
   opacity: 0.5;

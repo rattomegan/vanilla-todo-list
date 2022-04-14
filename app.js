@@ -49,6 +49,20 @@ function deleteOrCheck(evt) {
   // delete todo
   if(item.classList[0] === 'delete-btn') {
     const todo = item.parentElement;
-    todo.remove()
+    todo.classList.add('fall');
+    // setTimeout(() => {
+    //   todo.remove()
+    // }, 1000)
+    // remove todo after fall transition has completed
+    todo.addEventListener('transitioned', () => {
+      todo.remove();
+    })
+
+  }
+
+  // mark as complete
+  if(item.classList[0] === 'complete-btn') {
+    const todo = item.parentElement;
+    todo.classList.toggle('completed');
   }
 }

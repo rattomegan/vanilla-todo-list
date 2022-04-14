@@ -99,3 +99,10 @@ form button:hover {
   transform: translateY(8rem) rotateZ(20deg);
   opacity: 0;
 }
+
+.error {
+  font-size: 1.2rem;
+  color:rgb(240, 239, 239);
+  display: flex;
+  justify-content: center;
+}

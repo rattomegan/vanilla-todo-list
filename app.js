@@ -2,6 +2,7 @@
 const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
+const error = document.querySelector('.error')
 
 
 // Event Listeners
@@ -18,37 +19,43 @@ let todos;
 function addTodo(evt) {
   // Prevent form from submitting 
   evt.preventDefault();
+  error.innerText = '';
+  // alert for empty string entry
+  if(!todoInput.value) {
+    error.innerText = 'Please enter a todo'
+  } else {
+    // create div container for todo
+    const todoDiv = document.createElement('div');
+    todoDiv.classList.add('todo');
 
-  // create div container for todo
-  const todoDiv = document.createElement('div');
-  todoDiv.classList.add('todo');
+    // create li for todo item
+    const newTodo = document.createElement('li');
+    newTodo.innerText = todoInput.value;
+    newTodo.classList.add('todo-item');
+    todoDiv.appendChild(newTodo);
 
-  // create li for todo item
-  const newTodo = document.createElement('li');
-  newTodo.innerText = todoInput.value;
-  newTodo.classList.add('todo-item');
-  todoDiv.appendChild(newTodo);
+    // add todo to local storage
+    saveLocalTodos(todoInput.value);
 
-  // add todo to local storage
-  saveLocalTodos(todoInput.value);
+    // completed button
+    const completedBtn = document.createElement('button');
+    completedBtn.innerHTML = '<i class="fa-solid fa-square-check"></i>';
+    completedBtn.classList.add('complete-btn');
+    todoDiv.appendChild(completedBtn);
 
-  // completed button
-  const completedBtn = document.createElement('button');
-  completedBtn.innerHTML = '<i class="fa-solid fa-square-check"></i>';
-  completedBtn.classList.add('complete-btn');
-  todoDiv.appendChild(completedBtn);
+    // delete button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = '<i class="fa-solid fa-square-xmark"></i>';
+    deleteBtn.classList.add('delete-btn');
+    todoDiv.appendChild(deleteBtn);
 
-  // delete button
-  const deleteBtn = document.createElement('button');
-  deleteBtn.innerHTML = '<i class="fa-solid fa-square-xmark"></i>';
-  deleteBtn.classList.add('delete-btn');
-  todoDiv.appendChild(deleteBtn);
+    // add todo to list
+    todoList.appendChild(todoDiv);
 
-  // add todo to list
-  todoList.appendChild(todoDiv);
-
-  // clear input value
-  todoInput.value = '';
+    // clear input value
+    todoInput.value = '';
+  }
+  
 }
 
 function deleteOrCheck(evt) {

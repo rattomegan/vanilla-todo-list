@@ -43,3 +43,41 @@ form button:hover {
   color: white;
 }
 
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list {
+  min-width: 40%;
+  list-style: none; 
+}
+
+.todo {
+  margin: 1rem;
+  background-color: #fff;
+  color: #333;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-item {
+  flex: 1;
+  padding: 0 0.5rem;
+}
+
+.delete-btn, .complete-btn {
+  background: #f77f5d;
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.complete-btn {
+  background: rgb(140, 201, 43);
+}

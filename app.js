@@ -26,16 +26,19 @@ function addTodo(evt) {
 
   // completed button
   const completedBtn = document.createElement('button');
-  completedBtn.innerText = 'Complete';
+  completedBtn.innerText = 'C';
   completedBtn.classList.add('complete-btn');
   todoDiv.appendChild(completedBtn);
 
   // delete button
   const deleteBtn = document.createElement('button');
-  deleteBtn.innerText = 'Delete';
+  deleteBtn.innerText = 'D';
   deleteBtn.classList.add('delete-btn');
   todoDiv.appendChild(deleteBtn);
 
   // add todo to list
   todoList.appendChild(todoDiv);
+
+  // clear input value
+  todoInput.value = '';
 }

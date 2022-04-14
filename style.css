@@ -18,6 +18,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 0.2rem;
 }
 
 .header {
@@ -62,6 +63,8 @@ form button {
 form input {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  width: 100%;
+  max-width: 500px;
 }
 
 form button {
@@ -90,34 +93,42 @@ form button:hover {
 }
 
 .todo {
-  margin: 1rem;
-  background-color: #fff;
+  margin-bottom: 1rem;
+  background-color: #f4fce3;
   color: #333;
   font-size: 1.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
+  border-radius: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
 }
 
 .todo-item {
   flex: 1;
-  padding: 0 0.5rem;
+  padding: 0 0.5rem;  
 }
 
 .delete-btn, 
 .complete-btn {
-  background: #ffa94d;
+  background: #d88771;
   color: #fff;
   border: none;
   padding: 0.6rem;
   cursor: pointer;
   font-size: 1rem;
+  align-self: stretch;
 }
 
 .complete-btn {
-  background: #1098ad;
+  background: #b2ad7f;
 }
+
+
 
 /* disable clicking on icon so there are no pointer position issues when clicking on button */
 .fa-check,
@@ -142,3 +153,10 @@ form button:hover {
   display: flex;
   justify-content: center;
 }
+
+#time {
+  text-align: center;
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+}
+

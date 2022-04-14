@@ -1,0 +1,41 @@
+// Selectors
+const todoInput = document.querySelector('.todo-input');
+const todoButton = document.querySelector('.todo-button');
+const todoList = document.querySelector('.todo-list');
+
+
+// Event Listeners
+todoButton.addEventListener('click', addTodo);
+
+
+// Functions
+
+function addTodo(evt) {
+  // Prevent form from submitting 
+  evt.preventDefault();
+
+  // create div container for todo
+  const todoDiv = document.createElement('div');
+  todoDiv.classList.add('todo');
+
+  // create li for todo item
+  const newTodo = document.createElement('li');
+  newTodo.innerText = todoInput.value;
+  newTodo.classList.add('todo-item');
+  todoDiv.appendChild(newTodo);
+
+  // completed button
+  const completedBtn = document.createElement('button');
+  completedBtn.innerText = 'Complete';
+  completedBtn.classList.add('complete-btn');
+  todoDiv.appendChild(completedBtn);
+
+  // delete button
+  const deleteBtn = document.createElement('button');
+  deleteBtn.innerText = 'Delete';
+  deleteBtn.classList.add('delete-btn');
+  todoDiv.appendChild(deleteBtn);
+
+  // add todo to list
+  todoList.appendChild(todoDiv);
+}

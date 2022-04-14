@@ -87,15 +87,12 @@ form button:hover {
 }
 
 .todo-list {
-  min-width: 40%;
+  min-width: 45%;
   list-style: none; 
-  /* border outside of list */
-  /* border: 1px solid #00509d;
-  border-radius: 5px; */
 }
 
 .todo {
-  padding: 0.8rem;
+  padding: 0.4rem;
   /* color: #333; */
   font-size: 1.6rem;
   display: flex;
@@ -151,7 +148,7 @@ form button:hover {
 
 #time {
   text-align: center;
-  margin-top: 0.2rem;
+  margin-top: 0.8rem;
   font-size: 0.8rem;
 }
 

@@ -38,7 +38,7 @@ function addTodo(evt) {
 
     // completed button
     const completedBtn = document.createElement('button');
-    completedBtn.innerHTML = icons['complete'];
+    completedBtn.innerHTML = icons['checkbox'];
     completedBtn.classList.add('complete-btn');
     todoDiv.appendChild(completedBtn);
 

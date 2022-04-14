@@ -6,7 +6,8 @@
 
 body {
   font-size: 62.5%;
-  background-image: linear-gradient(120deg, #f6ab65, #fda085);
+  /* background-image: linear-gradient(120deg, #f6ab65, #fda085); */
+  background-image: linear-gradient(to top right, #a2b9bc, #b2ad7f);
   color: #fff;
   font-family: 'Source Code Pro', monospace;
   min-height: 100vh;
@@ -23,14 +24,13 @@ body {
   margin-top: 3.6rem;
 }
 
-
 .header h1 {
   border-right: 3px solid #333;
   overflow: hidden;
   /* need letter spacing for non mono font */
   /* letter-spacing: 0.2rem; */
   white-space: nowrap;
-  font-size: 5.6em;
+  font-size: 7.6em;
   font-weight: 600;
 
   animation: typing 3s steps(6),
@@ -48,19 +48,29 @@ body {
   50%{ border-color: white; }
 }
 
+
 form input,
 form button {
+  font-family: 'Source Code Pro', monospace;
   padding: 0.5rem;
   font-size: 1.6rem;
+  outline: none;
   border: none;
   background-color: white;
 }
 
+form input {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
 form button {
-  color: #d88771;
+  color: #758c55;
   background-color: white;
   cursor: pointer;
   transition: all 0.3s ease;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 form button:hover {
@@ -97,7 +107,7 @@ form button:hover {
 
 .delete-btn, 
 .complete-btn {
-  background: #f77f5d;
+  background: #ffa94d;
   color: #fff;
   border: none;
   padding: 0.6rem;
@@ -106,12 +116,13 @@ form button:hover {
 }
 
 .complete-btn {
-  background: rgb(140, 201, 43);
+  background: #1098ad;
 }
 
 /* disable clicking on icon so there are no pointer position issues when clicking on button */
-.fa-square-check,
-.fa-square-xmark {
+.fa-check,
+.fa-xmark {
+  font-size: 1.4rem;
   pointer-events: none;
 }
 
@@ -127,7 +138,7 @@ form button:hover {
 
 .error {
   font-size: 1.2rem;
-  color:rgb(240, 239, 239);
+  color:rgb(254, 113, 47);
   display: flex;
   justify-content: center;
 }

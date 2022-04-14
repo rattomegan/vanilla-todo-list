@@ -39,13 +39,13 @@ function addTodo(evt) {
 
     // completed button
     const completedBtn = document.createElement('button');
-    completedBtn.innerHTML = '<i class="fa-solid fa-square-check"></i>';
+    completedBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
     completedBtn.classList.add('complete-btn');
     todoDiv.appendChild(completedBtn);
 
     // delete button
     const deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = '<i class="fa-solid fa-square-xmark"></i>';
+    deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     deleteBtn.classList.add('delete-btn');
     todoDiv.appendChild(deleteBtn);
 
@@ -108,13 +108,13 @@ function getTodos() {
 
     // completed button
     const completedBtn = document.createElement('button');
-    completedBtn.innerHTML = '<i class="fa-solid fa-square-check"></i>';
+    completedBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
     completedBtn.classList.add('complete-btn');
     todoDiv.appendChild(completedBtn);
 
     // delete button
     const deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = '<i class="fa-solid fa-square-xmark"></i>';
+    deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     deleteBtn.classList.add('delete-btn');
     todoDiv.appendChild(deleteBtn);
 

@@ -10,6 +10,8 @@ todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteOrCheck);
 
 
+// State Variables
+let todos;
 
 // Functions
 
@@ -63,7 +65,6 @@ function deleteOrCheck(evt) {
     todo.addEventListener('transitionend', evt => {
       todo.remove();
     })
-
   }
 
   // mark as complete
@@ -76,13 +77,7 @@ function deleteOrCheck(evt) {
 
 function saveLocalTodos(todo) {
   // check if there are already todos saved
-  let todos;
-  if(localStorage.getItem('todos') === null) {
-    todos = [];
-  } else {
-    // if there are, parse it back into an array
-    todos = JSON.parse(localStorage.getItem('todos'));
-  }
+  checkLocalStorage();
   // push new todo to array
   todos.push(todo);
   // set it back to local storage
@@ -92,13 +87,7 @@ function saveLocalTodos(todo) {
 
 function getTodos() {
   // check if there are already todos saved
-  let todos;
-  if(localStorage.getItem('todos') === null) {
-    todos = [];
-  } else {
-    // if there are, parse it back into an array
-    todos = JSON.parse(localStorage.getItem('todos'));
-  }
+  checkLocalStorage();
   todos.forEach(todo => {
     // create div container for todo
     const todoDiv = document.createElement('div');
@@ -129,13 +118,13 @@ function getTodos() {
 }
 
 function removeLocalTodos(todo) {
-  if(localStorage.getItem('todos') === null) {
-    todos = [];
-  } else {
-    // if there are, parse it back into an array
-    todos = JSON.parse(localStorage.getItem('todos'));
-  }
+  checkLocalStorage();
   const todoIndex = todo.children[0].innerText
   todos.splice(todos.indexOf(todoIndex), 1);
   localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function checkLocalStorage() {
+  // if our todo array doesn't exist, create on, otherwise, parse 
+  return !localStorage.getItem('todos') ? todos = [] : todos = JSON.parse(localStorage.getItem('todos'));
 }

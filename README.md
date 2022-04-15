@@ -1,7 +1,6 @@
 # Todo List
 
 ## Overview
------------
 Basic todo application with vanilla JavaScript. Add, complete, and delete tasks. 
 
 - Displays live local time and date
@@ -12,14 +11,13 @@ Basic todo application with vanilla JavaScript. Add, complete, and delete tasks.
 
 ---
 ## Screenshots
----
 
 <img src="https://i.imgur.com/pvmA5en.png" width="400"> 
 
  
 ---
 ## Technologies Used
----
+
 - HTML
 - CSS
 - JavaScript
@@ -27,7 +25,7 @@ Basic todo application with vanilla JavaScript. Add, complete, and delete tasks.
 
 ---
 ## Features to come
----
+
 - Set todo priority
 - Color theme options
 - Edit todo

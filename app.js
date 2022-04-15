@@ -2,7 +2,7 @@
 const icons = {
   complete: '<i class="fa-regular fa-square-check"></i>',
   deleted: '<i class="fa-solid fa-xmark"></i>',
-  checkbox: '<i class="fa-regular fa-square"></i>'
+  checkbox: '<i class="fa-regular fa-square"></i>',
 }
 
 
@@ -14,7 +14,7 @@ let todos;
 const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
-const error = document.querySelector('.error')
+const error = document.querySelector('.error');
 
 
 // Event Listeners
@@ -28,19 +28,16 @@ function createTodo(todo) {
   // create div container
   const todoDiv = document.createElement('div');
   todoDiv.classList.add('todo');
-
   // create checkmark button
   const completeBtn = document.createElement('button');
   completeBtn.innerHTML = icons['checkbox'];
   completeBtn.classList.add('complete-btn');
   todoDiv.appendChild(completeBtn);
-
   // create li element for todo text
   const newTodo = document.createElement('li');
   newTodo.innerText = todo;
   newTodo.classList.add('todo-item');
   todoDiv.appendChild(newTodo);
-
   // create delete button
   const deleteBtn = document.createElement('button');
   deleteBtn.innerHTML = icons['deleted'];
@@ -55,24 +52,32 @@ function addTodo(evt) {
   // Prevent form from submitting 
   evt.preventDefault();
   error.innerText = '';
-
   // error for empty string entry
   if(!todoInput.value) {
     error.innerText = 'Please enter a todo!'
   } else {
     // create div container for todo
     let todoDiv = createTodo(todoInput.value);
-
     // add todo to list
     todoList.appendChild(todoDiv);
-
     // add todo to local storage
     saveLocalTodos(todoInput.value);
-
     // clear input value
     todoInput.value = '';
   }
 };
+
+
+function getTodos() {
+  // check if there are already todos saved
+  checkLocalStorage();
+  todos.forEach(todo => {
+    // create todo
+    let todoDiv = createTodo(todo);
+    // add todo to list
+    todoList.appendChild(todoDiv);
+  })
+}
 
 
 function deleteOrComplete(evt) {
@@ -81,7 +86,7 @@ function deleteOrComplete(evt) {
   if(item.classList[0] === 'delete-btn') {
     const todo = item.parentElement; // This gives us the entire todo div
     todo.classList.add('fall');
-    removeLocalTodos(todo)
+    removeLocalTodos(todo);
     // remove todo once transition has finished
     todo.addEventListener('transitionend', evt => {
       todo.remove();
@@ -92,28 +97,12 @@ function deleteOrComplete(evt) {
   if(item.classList[0] === 'complete-btn') {
     const todo = item.parentElement;
     todo.classList.toggle('completed');
-
     // add new classname to toggle icon
     item.classList.toggle('complete');
-
-    // toggle icon from empty box to checked based on 'complete' class
     item.innerHTML = item.classList[1] === 'complete' 
       ? icons['complete'] 
       : icons['checkbox'];
   }
-}
-
-
-function getTodos() {
-  // check if there are already todos saved
-  checkLocalStorage();
-  todos.forEach(todo => {
-    // create todo
-    let todoDiv = createTodo(todo);
-
-    // add todo to list
-    todoList.appendChild(todoDiv);
-  })
 }
 
 
@@ -139,7 +128,7 @@ function checkLocalStorage() {
   // if our todo array exists parse, else create
   return todos = localStorage.getItem('todos')
     ? JSON.parse(localStorage.getItem('todos'))
-    : []
+    : [];
 }
 
 

@@ -1,9 +1,13 @@
+// Constants
 const icons = {
-  // complete: '<i class="fa-regular fa-check"></i>',
   complete: '<i class="fa-regular fa-square-check"></i>',
   deleted: '<i class="fa-solid fa-xmark"></i>',
   checkbox: '<i class="fa-regular fa-square"></i>'
 }
+
+
+// State Variables
+let todos;
 
 
 // Selectors
@@ -16,58 +20,47 @@ const error = document.querySelector('.error')
 // Event Listeners
 document.addEventListener('DOMContentLoaded', getTodos);
 todoButton.addEventListener('click', addTodo);
-todoList.addEventListener('click', deleteOrCheck);
+todoList.addEventListener('click', deleteOrComplete);
 
-
-// State Variables
-let todos;
 
 // Functions
-
 function addTodo(evt) {
   // Prevent form from submitting 
   evt.preventDefault();
   error.innerText = '';
-  // alert for empty string entry
+
+  // error for empty string entry
   if(!todoInput.value) {
-    error.innerText = 'Please enter a todo'
+    error.innerText = 'Please enter a todo!'
+
   } else {
     // create div container for todo
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
 
-    // completed button
-    const completedBtn = document.createElement('button');
-    completedBtn.innerHTML = icons['checkbox'];
-    completedBtn.classList.add('complete-btn');
-    todoDiv.appendChild(completedBtn);
-
+    // create completed button
+    todoDiv.appendChild(createCompleteBtn());
 
     // create li for todo item
-    const newTodo = document.createElement('li');
-    newTodo.innerText = todoInput.value;
-    newTodo.classList.add('todo-item');
+    const newTodo = createLiItem(todoInput.value);
     todoDiv.appendChild(newTodo);
-
-    // add todo to local storage
-    saveLocalTodos(todoInput.value);
-
+    
     // delete button
-    const deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = icons['deleted'];
-    deleteBtn.classList.add('delete-btn');
-    todoDiv.appendChild(deleteBtn);
+    todoDiv.appendChild(createDeleteBtn());
 
     // add todo to list
     todoList.appendChild(todoDiv);
 
+    // add todo to local storage
+    saveLocalTodos(todoInput.value);
+
     // clear input value
     todoInput.value = '';
   }
-  
-}
+};
 
-function deleteOrCheck(evt) {
+
+function deleteOrComplete(evt) {
   const item = evt.target; // this returns the entire button
   // delete todo
   if(item.classList[0] === 'delete-btn') {
@@ -85,14 +78,13 @@ function deleteOrCheck(evt) {
     const todo = item.parentElement;
     todo.classList.toggle('completed');
 
-    // new code here
+    // add new classname to toggle icon
     item.classList.toggle('complete');
-    if(item.classList[1] === 'complete') {
-      item.innerHTML = icons['complete']
-    } else {
-      item.innerHTML = icons['checkbox'];
-    }
-    console.log(item)
+
+    // toggle icon from empty box to checked based on 'complete' class
+    item.innerHTML = item.classList[1] === 'complete' 
+      ? icons['complete'] 
+      : icons['checkbox'];
   }
 }
 
@@ -114,30 +106,22 @@ function getTodos() {
     // create div container for todo
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
-
-    // completed button
-    const completedBtn = document.createElement('button');
-    completedBtn.innerHTML = icons['checkbox'];
-    completedBtn.classList.add('complete-btn');
-    todoDiv.appendChild(completedBtn);
+  
+    // create complete button
+    todoDiv.appendChild(createCompleteBtn());
 
     // create li for todo item
-    const newTodo = document.createElement('li');
-    newTodo.innerText = todo;
-    newTodo.classList.add('todo-item');
+    const newTodo = createLiItem(todo);
     todoDiv.appendChild(newTodo);
 
-    // delete button
-    const deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = icons['deleted'];
-    deleteBtn.classList.add('delete-btn');
-    todoDiv.appendChild(deleteBtn);
+    // create delete button
+    todoDiv.appendChild(createDeleteBtn());
 
     // add todo to list
     todoList.appendChild(todoDiv);
-
   })
 }
+
 
 function removeLocalTodos(todo) {
   checkLocalStorage();
@@ -146,15 +130,42 @@ function removeLocalTodos(todo) {
   localStorage.setItem('todos', JSON.stringify(todos));
 }
 
+
 function checkLocalStorage() {
-  // if our todo array doesn't exist, create on, otherwise, parse 
-  return !localStorage.getItem('todos') ? todos = [] : todos = JSON.parse(localStorage.getItem('todos'));
+  // if our todo array exists parse, else create
+  return todos = localStorage.getItem('todos')
+    ? JSON.parse(localStorage.getItem('todos'))
+    : []
 }
 
 
+// Helper Functions
+function createLiItem(todo) {
+  const newTodo = document.createElement('li');
+  newTodo.innerText = todo;
+  newTodo.classList.add('todo-item');
+  return newTodo;
+}
+
+
+function createCompleteBtn() {
+  // completed button
+  const completeBtn = document.createElement('button');
+  completeBtn.innerHTML = icons['checkbox'];
+  completeBtn.classList.add('complete-btn');
+  return completeBtn;
+}
+
+
+function createDeleteBtn() {
+  const deleteBtn = document.createElement('button');
+  deleteBtn.innerHTML = icons['deleted'];
+  deleteBtn.classList.add('delete-btn');
+  return deleteBtn;
+}
+
 
 // Live Time
-
 function refreshTime() {
   const timeDisplay = document.getElementById("time");
   const dateString = new Date().toLocaleString();

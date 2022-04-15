@@ -24,6 +24,33 @@ todoList.addEventListener('click', deleteOrComplete);
 
 
 // Functions
+function createTodo(todo) {
+  // create div container
+  const todoDiv = document.createElement('div');
+  todoDiv.classList.add('todo');
+
+  // create checkmark button
+  const completeBtn = document.createElement('button');
+  completeBtn.innerHTML = icons['checkbox'];
+  completeBtn.classList.add('complete-btn');
+  todoDiv.appendChild(completeBtn);
+
+  // create li element for todo text
+  const newTodo = document.createElement('li');
+  newTodo.innerText = todo;
+  newTodo.classList.add('todo-item');
+  todoDiv.appendChild(newTodo);
+
+  // create delete button
+  const deleteBtn = document.createElement('button');
+  deleteBtn.innerHTML = icons['deleted'];
+  deleteBtn.classList.add('delete-btn');
+  todoDiv.appendChild(deleteBtn);
+
+  return todoDiv;
+}
+
+
 function addTodo(evt) {
   // Prevent form from submitting 
   evt.preventDefault();
@@ -32,21 +59,9 @@ function addTodo(evt) {
   // error for empty string entry
   if(!todoInput.value) {
     error.innerText = 'Please enter a todo!'
-
   } else {
     // create div container for todo
-    const todoDiv = document.createElement('div');
-    todoDiv.classList.add('todo');
-
-    // create completed button
-    todoDiv.appendChild(createCompleteBtn());
-
-    // create li for todo item
-    const newTodo = createLiItem(todoInput.value);
-    todoDiv.appendChild(newTodo);
-    
-    // delete button
-    todoDiv.appendChild(createDeleteBtn());
+    let todoDiv = createTodo(todoInput.value);
 
     // add todo to list
     todoList.appendChild(todoDiv);
@@ -64,13 +79,13 @@ function deleteOrComplete(evt) {
   const item = evt.target; // this returns the entire button
   // delete todo
   if(item.classList[0] === 'delete-btn') {
-    const todo = item.parentElement;
+    const todo = item.parentElement; // This gives us the entire todo div
     todo.classList.add('fall');
     removeLocalTodos(todo)
     // remove todo once transition has finished
     todo.addEventListener('transitionend', evt => {
       todo.remove();
-    })
+    }) 
   }
 
   // mark as complete
@@ -89,6 +104,19 @@ function deleteOrComplete(evt) {
 }
 
 
+function getTodos() {
+  // check if there are already todos saved
+  checkLocalStorage();
+  todos.forEach(todo => {
+    // create todo
+    let todoDiv = createTodo(todo);
+
+    // add todo to list
+    todoList.appendChild(todoDiv);
+  })
+}
+
+
 function saveLocalTodos(todo) {
   // check if there are already todos saved
   checkLocalStorage();
@@ -99,34 +127,10 @@ function saveLocalTodos(todo) {
 }
 
 
-function getTodos() {
-  // check if there are already todos saved
-  checkLocalStorage();
-  todos.forEach(todo => {
-    // create div container for todo
-    const todoDiv = document.createElement('div');
-    todoDiv.classList.add('todo');
-  
-    // create complete button
-    todoDiv.appendChild(createCompleteBtn());
-
-    // create li for todo item
-    const newTodo = createLiItem(todo);
-    todoDiv.appendChild(newTodo);
-
-    // create delete button
-    todoDiv.appendChild(createDeleteBtn());
-
-    // add todo to list
-    todoList.appendChild(todoDiv);
-  })
-}
-
-
 function removeLocalTodos(todo) {
   checkLocalStorage();
-  const todoIndex = todo.children[0].innerText
-  todos.splice(todos.indexOf(todoIndex), 1);
+  const todoText = todo.children[1].innerText;
+  todos.splice(todos.indexOf(todoText), 1);
   localStorage.setItem('todos', JSON.stringify(todos));
 }
 
@@ -136,32 +140,6 @@ function checkLocalStorage() {
   return todos = localStorage.getItem('todos')
     ? JSON.parse(localStorage.getItem('todos'))
     : []
-}
-
-
-// Helper Functions
-function createLiItem(todo) {
-  const newTodo = document.createElement('li');
-  newTodo.innerText = todo;
-  newTodo.classList.add('todo-item');
-  return newTodo;
-}
-
-
-function createCompleteBtn() {
-  // completed button
-  const completeBtn = document.createElement('button');
-  completeBtn.innerHTML = icons['checkbox'];
-  completeBtn.classList.add('complete-btn');
-  return completeBtn;
-}
-
-
-function createDeleteBtn() {
-  const deleteBtn = document.createElement('button');
-  deleteBtn.innerHTML = icons['deleted'];
-  deleteBtn.classList.add('delete-btn');
-  return deleteBtn;
 }
 
 

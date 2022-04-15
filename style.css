@@ -87,7 +87,7 @@ form button:hover {
 }
 
 .todo-list {
-  min-width: 45%;
+  min-width: 40%;
   list-style: none; 
 }
 
@@ -101,7 +101,6 @@ form button:hover {
   transition: all 0.3s ease;
   overflow: hidden;
   width: 100%;
-  max-width: 500px;
   border-bottom: 1px solid #00509d;
 }
 

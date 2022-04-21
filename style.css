@@ -6,8 +6,6 @@
   --red-text: #F95700;
 }
 
-
-
 .yellow-theme,
 .default-theme {
   --page-background-color: var(--yellow-background);
@@ -73,7 +71,6 @@ body {
   50%{ border-color: var(--page-text-color); }
 }
 
-
 form input,
 form button {
   font-family: 'Inter', sans-serif;
@@ -89,7 +86,7 @@ form input {
   border-bottom-left-radius: 5px;
   width: 100%;
   max-width: 40rem;
-  
+  color: var(--page-text-color);
 }
 
 form input::placeholder {
@@ -123,12 +120,13 @@ form button:hover {
 }
 
 .todo {
+  max-width: 60rem;
   padding: 1rem;
   font-size: 2.6rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  transition: text-decoration, opacity 0.3s ease;
+  align-items: flex-start;
+  transition: all 0.3s ease;
   overflow: hidden;
   width: 100%;
   border-bottom: 1px solid var(--page-text-color);
@@ -145,7 +143,6 @@ form button:hover {
   border: none;
   padding: 0.8rem;
   cursor: pointer;
-  align-self: stretch;
   background-color: transparent;
 }
 
@@ -178,4 +175,27 @@ form button:hover {
   text-align: center;
   margin-top: 0.8rem;
   font-size: 1.8rem;
+}
+
+.theme-picker {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px;
+}
+
+.theme-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.yellow-btn {
+  background: linear-gradient(to top right, var(--yellow-background) 50%, var(--blue-text) 50%);
+}
+
+.mint-btn {
+  background: linear-gradient(to top right, var(--mint-background) 50%, var(--red-text) 50%);
 }

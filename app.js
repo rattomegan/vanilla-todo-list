@@ -154,6 +154,8 @@ const themePicker = document.querySelector('.theme-picker');
 themePicker.addEventListener('click', (evt) => changeTheme(evt.target.id))
 
 function changeTheme(theme) {
+  // if an area outside of the button is clicked, don't do anything
+  if (!theme) return;
   localStorage.setItem('savedTheme', theme);
   document.body.className = theme;
 }

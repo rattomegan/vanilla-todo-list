@@ -143,3 +143,7 @@ function refreshTime() {
 refreshTime();
 
 setInterval(refreshTime, 1000);
+
+
+// COLOR SELECTOR CODE
+

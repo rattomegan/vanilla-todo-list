@@ -1,7 +1,29 @@
+:root {
+
+  --yellow-background: #f0f3bd;
+  --blue-text: #00509d;
+  --mint-background: #adefd1;
+  --red-text: #F95700;
+}
+
+
+
+.yellowTheme,
+.defaultTheme {
+  --page-background-color: var(--yellow-background);
+  --page-text-color: var(--blue-text);
+}
+
+.mintTheme {
+  --page-background-color: var(--mint-background);
+  --page-text-color: var(--red-text);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 html {
@@ -9,8 +31,8 @@ html {
 }
 
 body {
-  background-color: #f0f3bd;
-  color: #00509d;
+  background-color: var(--page-background-color);
+  color: var(--page-text-color);
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
 }
@@ -30,7 +52,7 @@ body {
 .header h1 {
   font-family: 'Source Code Pro', monospace;
   text-transform: uppercase;
-  border-right: 3px solid #00509d;
+  border-right: 3px solid var(--page-text-color);
   overflow: hidden;
   white-space: nowrap;
   font-size: 7.6em;
@@ -48,7 +70,7 @@ body {
 
 @keyframes blinking-cursor {
   0%, 100%{ border-color: transparent; }
-  50%{ border-color: #00509d; }
+  50%{ border-color: var(--page-text-color); }
 }
 
 
@@ -67,10 +89,15 @@ form input {
   border-bottom-left-radius: 5px;
   width: 100%;
   max-width: 40rem;
+  
+}
+
+form input::placeholder {
+  color: var(--page-text-color);
 }
 
 form button {
-  color: #00509d;
+  color: var(--page-text-color);
   background-color: white;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -79,7 +106,7 @@ form button {
 }
 
 form button:hover {
-  background-color: #00509d;
+  background-color: var(--page-text-color);
   color: white;
 }
 
@@ -104,7 +131,7 @@ form button:hover {
   transition: all 0.3s ease;
   overflow: hidden;
   width: 100%;
-  border-bottom: 1px solid #00509d;
+  border-bottom: 1px solid var(--page-text-color);
 }
 
 .todo-item {
@@ -114,7 +141,7 @@ form button:hover {
 
 .delete-btn, 
 .complete-btn {
-  color: #00509d;
+  color: var(--page-text-color);
   border: none;
   padding: 0.8rem;
   cursor: pointer;
@@ -152,4 +179,3 @@ form button:hover {
   margin-top: 0.8rem;
   font-size: 1.8rem;
 }
-

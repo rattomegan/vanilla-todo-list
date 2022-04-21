@@ -8,13 +8,13 @@
 
 
 
-.yellowTheme,
-.defaultTheme {
+.yellow-theme,
+.default-theme {
   --page-background-color: var(--yellow-background);
   --page-text-color: var(--blue-text);
 }
 
-.mintTheme {
+.mint-theme {
   --page-background-color: var(--mint-background);
   --page-text-color: var(--red-text);
 }
@@ -23,7 +23,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
 
 html {
@@ -35,6 +34,7 @@ body {
   color: var(--page-text-color);
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
+  transition: all 0.3s;
 }
 
 .header, form {
@@ -128,7 +128,7 @@ form button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: text-decoration, opacity 0.3s ease;
   overflow: hidden;
   width: 100%;
   border-bottom: 1px solid var(--page-text-color);

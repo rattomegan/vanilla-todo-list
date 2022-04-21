@@ -147,3 +147,20 @@ setInterval(refreshTime, 1000);
 
 // COLOR SELECTOR CODE
 
+// select div that holds all theme buttons
+const themePicker = document.querySelector('.theme-picker');
+
+// get target.id for each button to pass to changeTheme();
+themePicker.addEventListener('click', (evt) => changeTheme(evt.target.id))
+
+function changeTheme(theme) {
+  localStorage.setItem('savedTheme', theme);
+  document.body.className = theme;
+}
+
+function getTheme() {
+  let savedTheme = localStorage.getItem('savedTheme');
+  savedTheme === null ? changeTheme('default-theme') : changeTheme(savedTheme);
+}
+
+getTheme();

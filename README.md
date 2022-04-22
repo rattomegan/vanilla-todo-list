@@ -13,7 +13,8 @@ Basic todo application with vanilla JavaScript. Add, complete, and delete tasks 
 ---
 ## Screenshots
 
-<img src="https://i.imgur.com/pvmA5en.png" width="400"> 
+<img src="https://i.imgur.com/wNUaM61.png" width="400"> 
+<img src="https://i.imgur.com/1ZtGxaP.png" width="400"> 
 
  
 ---

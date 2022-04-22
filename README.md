@@ -1,13 +1,14 @@
 # Todo List
 
 ## Overview
-Basic todo application with vanilla JavaScript. Add, complete, and delete tasks. 
+Basic todo application with vanilla JavaScript. Add, complete, and delete tasks and choose the colors to do it in. Todos and theme persist with local storage.
 
 - Displays live local time and date
 - Utilizes local storage
+- Multiple themes
 
 
-[Click here to view the website!](https://mr-todo-it.netlify.app/)
+[Click here to view the app!](https://mr-todo-it.netlify.app/)
 
 ---
 ## Screenshots
@@ -27,7 +28,6 @@ Basic todo application with vanilla JavaScript. Add, complete, and delete tasks.
 ## Features to come
 
 - Set todo priority
-- Color theme options
 - Edit todo
 - Add sub todos
 

@@ -32,7 +32,6 @@ body {
   color: var(--page-text-color);
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
-  transition: all 0.3s;
 }
 
 .header, form {
@@ -40,7 +39,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 0.2rem;
+  margin: 0 0.8rem;
 }
 
 .header {
@@ -70,6 +69,7 @@ body {
   0%, 100%{ border-color: transparent; }
   50%{ border-color: var(--page-text-color); }
 }
+
 
 form input,
 form button {
@@ -114,13 +114,12 @@ form button:hover {
 }
 
 .todo-list {
-  min-width: 40%;
-  /* max-width: 40rem; */
+  width: 44rem;
   list-style: none; 
 }
 
 .todo {
-  max-width: 60rem;
+  word-break: break-all;
   padding: 1rem;
   font-size: 2.6rem;
   display: flex;
@@ -179,8 +178,8 @@ form button:hover {
 
 .theme-picker {
   display: flex;
-  justify-content: center;
-  gap: 5px;
+  justify-content: flex-end;
+  gap: 10px;
   padding: 5px;
 }
 
@@ -190,6 +189,11 @@ form button:hover {
   border-radius: 50%;
   border: none;
   cursor: pointer;
+  transition: all 0.3 ease;
+}
+
+.theme-btn:hover {
+  transform: scale(1.2);
 }
 
 .yellow-btn {
@@ -199,3 +203,4 @@ form button:hover {
 .mint-btn {
   background: linear-gradient(to top right, var(--mint-background) 50%, var(--red-text) 50%);
 }
+

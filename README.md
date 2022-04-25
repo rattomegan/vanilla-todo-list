@@ -28,6 +28,7 @@ Basic todo application with vanilla JavaScript. Add, complete, and delete tasks 
 ---
 ## Features to come
 
+- Save tasks marked as completed but not deleted
 - Set todo priority
 - Edit todo
 - Add sub todos
